@@ -136,25 +136,16 @@ class CarController extends Controller
             }
         }
 
-        // $car = Car::update([
-        //     'immatricule' => $request->immatricule,
-        //     'genre' => $request->genre,
-        //     'marque' => $request->marque,
-        //     'cylindre' => $request->cylindre,
-        //     'couleur' => $request->couleur,
-        //     'placeassise' => $request->placeassise,
-        //     'image' => implode('|', $image),
-        // ]);
-
-        $car->immatricule = $request->input('immatricule');
-        $car->marque = $request->input('marque');
-        $car->genre = $request->input('genre'); 
-        $car->couleur = $request->input('couleur');
-        $car->cylindre = $request->input('cylindre');
-        $car->placeassise = $request->input('placeassise');
-        $car->image = $request->input('image');
-
-        $car->save();
+ 
+        $car->update([
+               'immatricule' => $request->immatricule,
+                'genre' => $request->genre,
+                'marque' => $request->marque,
+                'cylindre' => $request->cylindre,
+                'couleur' => $request->couleur,
+                'placeassise' => $request->placeassise,
+                'image' => implode('|', $image),
+        ]);
 
         return Redirect::route('cars.index')->with('message', 'id-car '. $car->immatricule.'. Félicitation, les informations de la voiture '. $car->marque .'- '. $car->genre.' ont bien été modifiées.');
     }
@@ -168,15 +159,9 @@ class CarController extends Controller
     public function destroy(Car $car)
     {
         // dd($id);
-        $car = Car::where('id',$car)->delete();
+        $car->delete();
 
-        // return redirect('cars.index')->with('success', 'Data Deleted')
-
-        // $car =  Car::find($car); 
-        // $car->delete();
-
-        
-        return back();
+        return Redirect::route('cars.index')->with('message', 'les informations de la voiture immatriculée ' .  $car->immatricule . ' ont été supprimées');
     }
 
     // private function validator(){

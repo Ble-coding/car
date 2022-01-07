@@ -71,6 +71,16 @@
                                 @enderror
                         </div>
                     </div> 
+                    
+                    @if(Route::is('cars.edit') )
+                        @php
+                                $image = DB::table('cars')->where('id', 1)->first();
+                                $images = explode('|', $car->image);
+                        @endphp                                    
+                        @foreach ( $images as $item )
+                                <td><img src="{{URL::to($item)}}" class="mb-2" style="height:100px;width:100px" alt=""></td> 
+                        @endforeach    
+                    @endif
                     <div class="col-md-12">
                         <div class="form-group">
                             <label class="form-label">Image</label>

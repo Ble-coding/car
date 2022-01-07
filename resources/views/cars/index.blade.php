@@ -79,10 +79,13 @@
               											<a href="{{ route('cars.show', ['car' => $car->id])}}" class="btn btn-light">👁️</a>
 														<a href="{{ route('cars.edit' , ['car' => $car->id]) }}" class="btn btn-light">✏️</a>
 														{{-- <a href="{{ route('cars.destroy' , ['car' => $car->id]) }}" class="btn btn-light">🗑️</a> --}}
-														<form class="form-horizontal" class="delete_form" action="{{ route('cars.update', ['car' => $car->id]) }}" method="POST" enctype="multipart/form-data"> 
-															@method('DELETE') 
-															<button type="submit" class="btn btn-danger">{{ trans('Delete') }}</button>
-															</form>
+														<form method="POST" class="delete_form" action="{{ route('cars.destroy', $car) }}" >
+															<!-- CSRF token -->
+															@csrf
+															<!-- <input type="hidden" name="_method" value="DELETE"> -->
+															@method("DELETE")
+															<input type="submit" value="x Supprimer" >
+														</form>
             										</td>
 
 												</tr>
