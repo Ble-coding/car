@@ -21,7 +21,7 @@ class CreateCarsTable extends Migration
             $table->string('couleur');
             $table->string('placeassise'); 
             $table->string('cylindre');
-            $table->string('image')->nullable();
+            $table->binary('image')->nullable();
             $table->timestamps();
         });
     }

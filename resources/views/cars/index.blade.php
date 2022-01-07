@@ -84,7 +84,7 @@
 															@csrf
 															<!-- <input type="hidden" name="_method" value="DELETE"> -->
 															@method("DELETE")
-															<input type="submit" value="x Supprimer" >
+															<input type="submit" value="🗑️" >
 														</form>
             										</td>
 

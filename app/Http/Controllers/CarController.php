@@ -135,7 +135,6 @@ class CarController extends Controller
                 $image[] = $image_url;
             }
         }
-
  
         $car->update([
                'immatricule' => $request->immatricule,
@@ -146,6 +145,7 @@ class CarController extends Controller
                 'placeassise' => $request->placeassise,
                 'image' => implode('|', $image),
         ]);
+
 
         return Redirect::route('cars.index')->with('message', 'id-car '. $car->immatricule.'. Félicitation, les informations de la voiture '. $car->marque .'- '. $car->genre.' ont bien été modifiées.');
     }
